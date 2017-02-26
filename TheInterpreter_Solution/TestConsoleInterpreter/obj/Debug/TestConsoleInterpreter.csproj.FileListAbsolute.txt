@@ -1,0 +1,6 @@
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\bin\Debug\TestConsoleInterpreter.exe
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\bin\Debug\TestConsoleInterpreter.pdb
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\obj\Debug\TestConsoleInterpreter.csprojResolveAssemblyReference.cache
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\obj\Debug\TestConsoleInterpreter.exe
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\obj\Debug\TestConsoleInterpreter.pdb
+E:\Visual Studio Projects\TheInterpreter\TestConsoleInterpreter\bin\Debug\TestConsoleInterpreter.exe.config
