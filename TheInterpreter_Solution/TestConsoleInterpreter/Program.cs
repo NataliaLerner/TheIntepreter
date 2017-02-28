@@ -15,13 +15,18 @@ namespace TestConsoleInterpreter
         {
             Operations op = new Operations();
 
-            int x = 260046848;
-            //Console.WriteLine(op.GetOperand(x, 3));
+            int x = 260555747;
+            int y = 24;
+            int newOp = 15;
 
-            //Console.WriteLine(op.GetStringOperand(x, 4, 2));
-
-            op.OperandsOutputToConsole(x, 10);
-            //Console.WriteLine(op.GetOperation(x));
+            x = op.SetOperation(x, y);
+            x = op.SetOperand(x, newOp, 1);
+            Console.WriteLine(op.GetOperand(x, 3));
+            Console.WriteLine(op.GetOperand(x, 2));
+            Console.WriteLine(op.GetOperand(x, 1));
+            Console.WriteLine(op.GetOperation(x));    
+            
+                    
         }
     }
 }

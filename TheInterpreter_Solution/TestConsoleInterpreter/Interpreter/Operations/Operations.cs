@@ -5,38 +5,65 @@ namespace Interpreter.Operations
     public class Operations
     {
         /// <summary>
-        /// Выводит состояние регистров в заданной системе счисления на консоль
+        /// Текущее состояние всех регистров в 32-х разрядном числе в системе счисления 2, 8, 10, 16
         /// </summary>
-        /// <param name="num">32-х разрядное число</param>
+        /// <param name="num">32-x разрядное число</param>
         /// <param name="outPutBase">Система счисления</param>
-        public void OperandsOutputToConsole(int num, int outputBase)
+        /// <returns>Массив строк, где каждая строка - регистр 32-х битного числа</returns>
+        public string[] GetAllOperands(int num, int outPutBase)
         {
-            for (int i = 0; i != 3; ++i)
+            return new string[] 
             {
-                Console.WriteLine(GetStringOperand(num, i + 1, outputBase));
-            }
+                GetStringOperand(num, 3, outPutBase),
+                GetStringOperand(num, 2, outPutBase),
+                GetStringOperand(num, 1, outPutBase)
+            };
         }
 
         /// <summary>
-        /// Возвращает строковое представление операнда в 32-х разрядном числе в заданной системе счисления
+        /// Возвращает <see cref="string"/> представление операнда в 32-х разрядном числе в системе счисления 2, 8, 10, 16
         /// </summary>
         /// <param name="num">32-х разрядное число</param>
         /// <param name="operandIndex">Индекс операнда</param>
-        /// <param name="outputBase">Система счисления</param>
+        /// <param name="outputBase">Основание системы счисления</param>
         /// <returns>Строковое представление операнда</returns>
         public string GetStringOperand(int num, int operandIndex, int outputBase)
         {
             return Convert.ToString(GetOperand(num, operandIndex), outputBase);
         }
 
-        // TODO: Задать логику для SetOperand метода
+        /// <summary>
+        /// Возвращает <see cref="string"/> представление номера операции 32-х разрядного числа
+        /// </summary>
+        /// <param name="num">32-х разрядное число</param>
+        /// <returns></returns>
+        public string GetStringOperation(int num)
+        {
+            return Convert.ToString(GetOperation(num), 10);
+        }
+        
+        /// <summary>
+        /// Задать код операции 32-х разрядного числа
+        /// </summary>
+        /// <param name="num">32-х разрядное число</param>
+        /// <param name="newOperation">Новая операция</param>
+        /// <returns>32-х разрядное число с новым операндом</returns>
+        public int SetOperation(int num, int newOperation)
+        {
+            if (newOperation > 24 || newOperation < 0)
+            {
+                throw new ArgumentException("Недопустимое значение новой операции!", "newOperation");
+            }
+
+            return ((num >> 5) << 5) | newOperation;
+        }
 
         /// <summary>
         /// Задает значение операнда 32-х разрядного числа
         /// </summary>
         /// <param name="num">32-х разрядное число</param>
         /// <param name="newOperand">Новое значение операнда</param>
-        /// <param name="operandIndex">Индекс задаваемого операнда</param>
+        /// <param name="operandIndex">Индекс операнда</param>
         /// <returns>32-х разрядное число с новым операндом</returns>
         public int SetOperand(int num, int newOperand, int operandIndex)
         {
@@ -50,7 +77,7 @@ namespace Interpreter.Operations
                 throw new ArgumentOutOfRangeException("operandIndex", operandIndex, "Недопустимый индекс операнда! Индекс операнда не должен быть больше 3 или меньше 1");
             }
 
-            return 0;
+            return (num ^ GetOperand(num, operandIndex) << ((9 * operandIndex - 1) + 5)) | (newOperand << (9 * operandIndex - 1) + 5);
         }
 
         /// <summary>
