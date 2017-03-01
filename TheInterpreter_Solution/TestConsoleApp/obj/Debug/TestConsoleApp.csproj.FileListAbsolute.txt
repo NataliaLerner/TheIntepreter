@@ -1,0 +1,5 @@
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\TestConsoleApp.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\TestConsoleApp.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.csprojResolveAssemblyReference.cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.pdb

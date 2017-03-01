@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TestConsoleInterpreter")]
+[assembly: AssemblyTitle("TestConsoleApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestConsoleInterpreter")]
+[assembly: AssemblyProduct("TestConsoleApp")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("5fcf70ff-e84a-4a40-83a5-e1dc8c2951ac")]
+[assembly: Guid("c0c24e57-7446-497b-a46c-c810997e1c3e")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
