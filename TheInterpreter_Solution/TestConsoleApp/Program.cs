@@ -1,6 +1,7 @@
 ﻿using System;
+using Intepreter.Operations;
+using Intepreter.Operations.Core;
 
-using Interpreter;
 
 namespace TestConsoleApp
 {
@@ -12,7 +13,7 @@ namespace TestConsoleApp
             int operation = 2;
             int register = 15;
 
-            
+            Console.WriteLine(nameof(num32));
 
             num32 = OperationCore.SetOperation(num32, operation);
             num32 = OperationCore.SetRegister(num32, register, 1);

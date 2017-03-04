@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Intepreter.Operations.Core;
 
-namespace Interpreter
+
+namespace Intepreter.Operations
 {
     public static class Operations
     {
@@ -9,14 +11,12 @@ namespace Interpreter
         {
             Func<int, int> operation;
 
-            if (_operations.TryGetValue(OperationCore.GetOperation(num32), out operation))
+            if (OperationsFuncs.TryGetValue(OperationCore.GetOperation(num32), out operation))
             {
                 return operation(num32);
             }
-            else
-            {
-                return -1;
-            }
+
+            return -1;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Interpreter
 
         public static int OR_2_operation(int num32)
         {
-            int register = OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) | OperationCore.GetRegister(num32, 2), 9);
+            var register = OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) | OperationCore.GetRegister(num32, 2), 9);
 
             return OperationCore.SetRegister(
                 num32,
@@ -44,7 +44,7 @@ namespace Interpreter
 
         public static int AND_3_operation(int num32)
         {
-            int register = OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) & OperationCore.GetRegister(num32, 2), 9);
+            var register = OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) & OperationCore.GetRegister(num32, 2), 9);
 
             return OperationCore.SetRegister(
                 num32,
@@ -55,11 +55,11 @@ namespace Interpreter
         /// <summary>
         /// Словарь операций
         /// </summary>
-        private static Dictionary<int, Func<int, int>> _operations = new Dictionary<int, Func<int, int>>()
+        public static readonly Dictionary<int, Func<int, int>> OperationsFuncs = new Dictionary<int, Func<int, int>>()
         {
-            {1, new Func<int, int>(Operations.NOT_1_operation) },
-            {2, new Func<int, int>(Operations.OR_2_operation) },
-            {3, new Func<int, int>(Operations.AND_3_operation) }
+            {1, NOT_1_operation },
+            {2, OR_2_operation },
+            {3, AND_3_operation }
         };
     }
 }

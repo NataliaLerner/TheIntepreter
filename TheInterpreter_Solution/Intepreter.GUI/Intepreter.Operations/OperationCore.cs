@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Interpreter
+namespace Intepreter.Operations.Core
 {
     public static class Constants
     {
@@ -36,7 +36,7 @@ namespace Interpreter
         /// <returns>Массив строк, где каждая строка - регистр 32-х битного числа</returns>
         public static string[] GetAllRegisters(int num32, int outPutBase)
         {
-            return new string[] 
+            return new[] 
             {
                 GetStringRegister(num32, 3, outPutBase),
                 GetStringRegister(num32, 2, outPutBase),
@@ -76,7 +76,7 @@ namespace Interpreter
         {
             if (newOperation > Constants.MaxOperationCount || newOperation < 0)
             {
-                throw new ArgumentException("Недопустимое значение новой операции!", "newOperation");
+                throw new ArgumentException("Недопустимое значение новой операции!", nameof(newOperation));
             }
 
             return ((num32 >> Constants.OperationLength) << Constants.OperationLength) | newOperation;
@@ -93,7 +93,7 @@ namespace Interpreter
         {
             if (newRegister >> Constants.RegisterLength != 0)
             {
-                throw new ArgumentException("Значение нового регистра задано неверно! Должны быть заполнены только первые 9 бит!", "newRegister");
+                throw new ArgumentException("Значение нового регистра задано неверно! Должны быть заполнены только первые 9 бит!", nameof(newRegister));
             }
 
             return (num32 ^ (GetRegister(num32, registerIndex) << ((Constants.RegisterLength * (registerIndex - 1)) + Constants.OperationLength)))
@@ -120,7 +120,7 @@ namespace Interpreter
         {
             if (registerIndex > Constants.MaxRegisterIndex || registerIndex < Constants.MinRegisterIndex)
             {
-                throw new ArgumentOutOfRangeException("registerIndex", registerIndex, "Недопустимый индекс регистра! Индекс операнда не должен быть больше 3 или меньше 1");
+                throw new ArgumentOutOfRangeException(nameof(registerIndex), registerIndex, "Недопустимый индекс регистра! Индекс операнда не должен быть больше 3 или меньше 1");
             }
 
             return (((num32 >> Constants.OperationLength) >> (Constants.RegisterLength * (registerIndex - 1))) & ((1 << Constants.RegisterLength) - 1));

@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Intepreter\OperationCore.cs" />
-    <Compile Include="Intepreter\Operations.cs" />
+    <Compile Include="Intepreter.Operations\OperationCore.cs" />
+    <Compile Include="Intepreter.Operations\Operations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
