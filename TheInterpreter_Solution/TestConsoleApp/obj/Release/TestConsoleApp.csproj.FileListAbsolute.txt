@@ -1,0 +1,7 @@
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Release\TestConsoleApp.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Release\TestConsoleApp.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Release\TestConsoleApp.csprojResolveAssemblyReference.cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Release\TestConsoleApp.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Release\TestConsoleApp.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Release\Operations.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Release\Operations.pdb

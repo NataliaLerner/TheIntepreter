@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intepreter.Core">
+      <HintPath>..\Intepreter.Core\bin\Release\Intepreter.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,12 +59,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\MyCommand.cs" />
-    <Compile Include="Intepreter.Operations\OperationCore.cs" />
-    <Compile Include="Intepreter.Operations\Operations.cs" />
     <Compile Include="Model\Abstract\IEditor.cs" />
-    <Compile Include="Model\Abstract\OperationPeformer.cs" />
+    <Compile Include="Model\Abstract\IOperationPeformer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\SimpleEditorViewModel.cs" />
+    <Compile Include="ViewModel\OperationEditorViewModel.cs" />
+    <Compile Include="ViewModel\SimpleEditorViewModel.cs" />
     <Page Include="View\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

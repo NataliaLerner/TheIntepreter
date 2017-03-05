@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Intepreter.GUI.ViewModel;
 using Intepreter.GUI.Model.Abstract;
 
-namespace Intepreter.GUI.View
+namespace Intepreter.GUI.ViewModel
 {
     public class SimpleEditorViewModel :
         ViewModelBase, IEditor
-
     {
         public string Text
         {

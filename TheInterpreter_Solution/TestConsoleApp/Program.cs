@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using Intepreter.Operations;
-using Intepreter.Operations.Core;
 
+using Intepreter.Core;
+//using Intepreter.Operations;
+//using Intepreter.Operations.Core;
 
 namespace TestConsoleApp
 {
@@ -23,8 +25,8 @@ namespace TestConsoleApp
             {
                 num32 = 0;
             }
-           
-                   
+
+
             num32 = num32OperationResultValue.Item1;
 
             Console.WriteLine(num32OperationResultValue.Item2);

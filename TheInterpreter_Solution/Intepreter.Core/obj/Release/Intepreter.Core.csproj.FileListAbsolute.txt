@@ -1,0 +1,5 @@
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.Core\bin\Release\Intepreter.Core.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.Core\bin\Release\Intepreter.Core.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.Core\obj\Release\Intepreter.Core.csprojResolveAssemblyReference.cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.Core\obj\Release\Intepreter.Core.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.Core\obj\Release\Intepreter.Core.pdb

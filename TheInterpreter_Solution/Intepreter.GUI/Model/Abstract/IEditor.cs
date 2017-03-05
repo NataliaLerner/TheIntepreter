@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Intepreter.GUI.Model.Abstract
+﻿namespace Intepreter.GUI.Model.Abstract
 {
     public interface IEditor
     {
