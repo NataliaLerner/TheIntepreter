@@ -11,3 +11,4 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.GUI\obj\Debug\Intepreter
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.GUI\obj\Debug\Intepreter.GUI.csproj.GenerateResource.Cache
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.GUI\obj\Debug\Intepreter.GUI.exe
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.GUI\obj\Debug\Intepreter.GUI.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter.GUI\obj\Debug\Intepreter.GUI.csprojResolveAssemblyReference.cache

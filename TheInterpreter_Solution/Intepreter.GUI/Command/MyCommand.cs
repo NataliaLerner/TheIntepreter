@@ -5,13 +5,13 @@ namespace Intepreter.GUI.Command
 {
     public class MyCommand : ICommand
     {
-        public delegate void ICommandOnExecute(object parameter);
-        public delegate bool ICommandOnCanExecute(object parameter);
+        public delegate void CommandOnExecute(object parameter);
+        public delegate bool CommandOnCanExecute(object parameter);
 
-        private ICommandOnExecute _execute;
-        private ICommandOnCanExecute _canExecute;
+        private CommandOnExecute _execute;
+        private CommandOnCanExecute _canExecute;
 
-        public MyCommand(ICommandOnExecute onExecuteMethod, ICommandOnCanExecute onCanExecuteMethod)
+        public MyCommand(CommandOnExecute onExecuteMethod, CommandOnCanExecute onCanExecuteMethod)
         {
             _execute = onExecuteMethod;
             _canExecute = onCanExecuteMethod;

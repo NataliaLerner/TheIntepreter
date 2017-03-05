@@ -58,7 +58,10 @@
     <Compile Include="Command\MyCommand.cs" />
     <Compile Include="Intepreter.Operations\OperationCore.cs" />
     <Compile Include="Intepreter.Operations\Operations.cs" />
+    <Compile Include="Model\Abstract\IEditor.cs" />
+    <Compile Include="Model\Abstract\OperationPeformer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\SimpleEditorViewModel.cs" />
     <Page Include="View\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,9 +103,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
