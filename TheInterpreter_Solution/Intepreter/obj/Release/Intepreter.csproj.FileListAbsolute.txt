@@ -1,0 +1,14 @@
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Intepreter.exe.config
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.csprojResolveAssemblyReference.cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\View\MainWindowView.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\App.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter_MarkupCompile.cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter_MarkupCompile.lref
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Intepreter.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Intepreter.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\View\MainWindowView.baml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.g.resources
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.Properties.Resources.resources
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.csproj.GenerateResource.Cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.pdb
