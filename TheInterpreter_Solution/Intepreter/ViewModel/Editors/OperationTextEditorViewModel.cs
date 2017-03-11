@@ -1,4 +1,5 @@
 ﻿using Intepreter.Model.Abstract;
+using Intepreter.Model.Operations;
 
 namespace Intepreter.ViewModel.Editors
 {
@@ -11,9 +12,9 @@ namespace Intepreter.ViewModel.Editors
         public OperationTextEditorViewModel() : base("")
         { }
 
-        public int ExecuteOperation(int num32)
+        public void ExecuteOperation(int num32)
         {
-            return 0;
+            throw new System.NotImplementedException();
         }
     }
 }

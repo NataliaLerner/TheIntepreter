@@ -12,3 +12,16 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.P
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.csproj.GenerateResource.Cache
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.exe
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Release\Intepreter.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\System.Windows.Interactivity.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Extras.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Platform.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Microsoft.Practices.ServiceLocation.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.xml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Extras.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Extras.xml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Platform.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\GalaSoft.MvvmLight.Platform.xml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Microsoft.Practices.ServiceLocation.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Release\Microsoft.Practices.ServiceLocation.xml

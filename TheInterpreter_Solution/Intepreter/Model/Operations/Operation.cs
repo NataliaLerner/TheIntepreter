@@ -43,7 +43,7 @@ namespace Intepreter.Model.Operations
         {
             return OperationCore.SetRegister(
                 num32,
-                OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1), 9),
+                OperationCore.GetLastBits(~OperationCore.GetRegister(num32, 1), Constants.RegisterLength),
                 3);
         }
 
@@ -51,7 +51,7 @@ namespace Intepreter.Model.Operations
         {
             return OperationCore.SetRegister(
                 num32,
-                OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) | OperationCore.GetRegister(num32, 2), 9),
+                OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) | OperationCore.GetRegister(num32, 2), Constants.RegisterLength),
                 3);
         }
 
@@ -59,7 +59,7 @@ namespace Intepreter.Model.Operations
         {
             return OperationCore.SetRegister(
                 num32,
-                OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) & OperationCore.GetRegister(num32, 2), 9),
+                OperationCore.GetLastBits(OperationCore.GetRegister(num32, 1) & OperationCore.GetRegister(num32, 2), Constants.RegisterLength),
                 3);
         }
 

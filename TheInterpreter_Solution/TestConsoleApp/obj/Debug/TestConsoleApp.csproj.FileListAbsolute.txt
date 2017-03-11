@@ -4,5 +4,6 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsol
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.exe
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.pdb
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\TestConsoleApp.exe.config
-E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.Core.dll
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.Core.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.exe
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.pdb

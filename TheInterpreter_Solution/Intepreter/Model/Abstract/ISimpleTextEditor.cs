@@ -1,7 +1,6 @@
 ﻿namespace Intepreter.Model.Abstract
 {
-    public interface ISimpleTextEditor :
-        IEditor
+    public interface ISimpleTextEditor
     {
         string Text { get; set; }
 

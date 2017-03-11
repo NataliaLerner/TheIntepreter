@@ -3,7 +3,7 @@
     public interface IOperationTextEditor : 
         ISimpleTextEditor
     {
-        int ExecuteOperation(int num32);
+        void ExecuteOperation(int num32);
     }
 }
 

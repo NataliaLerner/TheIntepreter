@@ -17,6 +17,11 @@ namespace Intepreter.ViewModel.Editors
 
         public void AppendNum(int num32)
         {
+            if (num32 < 0)
+            {
+                throw new ArgumentException("32-х разрядное число не может быть меньше нуля", nameof(num32));
+            }
+
             var strBuilder = new StringBuilder(Text);
 
             foreach (var line in OperationCore.GetAllRegisters(num32, 10))
@@ -31,16 +36,31 @@ namespace Intepreter.ViewModel.Editors
 
         public void AppendLine(string line)
         {
-            Text = string.Concat(_text, Environment.NewLine, line);
+            if (line == null)
+            {
+                throw new ArgumentNullException(nameof(line));
+            }
+
+            Text = string.Concat(Text, Environment.NewLine, line);
         }
 
         public SimpleTextEditorViewModel(string initLine)
         {
+            if (initLine == null)
+            {
+                throw new ArgumentNullException(nameof(initLine));
+            }
+
             _text = initLine + Environment.NewLine;
         }
 
         public SimpleTextEditorViewModel() : this("")
         { }
+
+        public void ClearAll()
+        {
+            Text = "";
+        }
 
         private string _text;
     }

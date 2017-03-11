@@ -8,6 +8,7 @@ using System.Windows;
 
 using Intepreter.View;
 using Intepreter.ViewModel;
+using Intepreter.Service;
 
 namespace Intepreter
 {
@@ -20,7 +21,7 @@ namespace Intepreter
         {
             var mainWindow = new MainWindowView
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(new OperationPerfomerService())
             };
 
             mainWindow.Show();

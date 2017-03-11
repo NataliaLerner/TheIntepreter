@@ -4,6 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Intepreter.View"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <Window.Resources>
@@ -21,7 +25,7 @@
         </Style>
     </Window.Resources>
 
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -44,8 +48,14 @@
         <ScrollViewer Grid.Column="0" Grid.Row="1" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <TextBox>
-
+            <TextBox Text="{Binding Editor.Text}">
+                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <cmd:EventToCommand Command="{Binding EditorTextChangedCommand}" PassEventArgsToCommand="True"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
             </TextBox>
         </ScrollViewer>
 
@@ -58,8 +68,8 @@
         <ScrollViewer Grid.ColumnSpan="2" Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <TextBox>
-
+            <TextBox Text="{Binding Output.Text}">
+                
             </TextBox>
         </ScrollViewer>
     </Grid>
