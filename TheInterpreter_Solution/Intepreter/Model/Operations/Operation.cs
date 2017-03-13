@@ -16,7 +16,7 @@ namespace Intepreter.Model.Operations
 
             if (OperationsFuncs.TryGetValue(OperationCore.GetOperation(num32), out operation) == false)
             {
-                return -1;
+                throw new ArgumentException($"Операция под номером {OperationCore.GetStringOperation(num32)} найдена");
             }
 
             return operation(num32);

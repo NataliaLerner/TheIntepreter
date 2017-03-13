@@ -2,7 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Schema;
+
 using Intepreter.Model.Operations;
 using Intepreter.ViewModel.Editors;
 
@@ -17,7 +19,7 @@ namespace Intepreter.Service
                 @"E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\Model\IntepreterSchema.xsd");
             _settings.ValidationType = ValidationType.Schema;
 
-            _fileName = "default";
+            _fileName = "default.bin";
         }
 
         //В планах
@@ -96,6 +98,11 @@ namespace Intepreter.Service
             }
         }
 
+        /// <summary>
+        /// Сохранение в содержимого Edit в бинарный файл. Output для вывода ошибок
+        /// </summary>
+        /// <param name="editor"></param>
+        /// <param name="output"></param>
         public void SaveAllToBinaryFile(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output)
         {
             try
@@ -135,9 +142,49 @@ namespace Intepreter.Service
             }
         }
 
-        public void LoadAllFromBinaryFile(SimpleTextEditorViewModel editor)
+        /// <summary>
+        /// Загрузка в Edit из бинарного файла. Output для вывода ошибок
+        /// </summary>
+        /// <param name="editor">Редактор</param>
+        /// <param name="output">Вывод</param>
+        public void LoadAllFromBinaryFile(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output, string fileName)
         {
+            if (fileName != null)
+            {
+                _fileName = fileName;
+            }
 
+            try
+            {
+                using (var binReader = new BinaryReader(File.Open(_fileName, FileMode.Open)))
+                {
+                    var editorXmlMarkup = new XDocument(
+                        new XElement("File",
+                            new XAttribute("name", _fileName)));
+
+                    while (binReader.BaseStream.Position != binReader.BaseStream.Length)
+                    {
+                        var num32 = binReader.ReadInt32();
+
+                        editorXmlMarkup.Root.Add
+                        (new XElement("Number",
+                            new XAttribute("register1", OperationCore.GetStringRegister(num32, 1, 10)),
+                            new XAttribute("register2", OperationCore.GetStringRegister(num32, 2, 10)),
+                            new XAttribute("register3", OperationCore.GetStringRegister(num32, 3, 10)),
+                            new XAttribute("operation", OperationCore.GetStringOperation(num32))));
+
+                        editor.Text = editorXmlMarkup.ToString();
+                    }
+                }
+            }
+            catch (ArgumentException e)
+            {
+                output.AppendLine(e.Message);
+            }
+            catch (IOException e)
+            {
+                output.AppendLine(e.Message);
+            }
         }
 
         private string _fileName;

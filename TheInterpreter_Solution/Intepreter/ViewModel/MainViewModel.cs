@@ -11,6 +11,7 @@ using System.Windows.Input;
 using Intepreter.Command;
 using Intepreter.ViewModel.Editors;
 using Intepreter.Service;
+using Microsoft.Win32;
 
 namespace Intepreter.ViewModel
 {
@@ -25,7 +26,7 @@ namespace Intepreter.ViewModel
         public ICommand EditorTextChangedCommand { get; }
         public ICommand PerformCommand { get; }
         public ICommand SaveAllToBinaryFileCommand { get; }
-
+        public ICommand LoadAllFromBinaryFileCommand { get; }
         public ICommand TestCommand { get; }
 
         #endregion
@@ -42,6 +43,7 @@ namespace Intepreter.ViewModel
             EditorTextChangedCommand = new MyCommand(OnEditorTextChangedCommand, canExecute => true);
             PerformCommand = new MyCommand(OnPerformCommand, canExecute => true);
             SaveAllToBinaryFileCommand = new MyCommand(OnSaveAllToBinaryFileCommand, canExecute => true);
+            LoadAllFromBinaryFileCommand = new MyCommand(OnLoadAllFromBinaryFileCommand, canExecute => true);
             TestCommand = new MyCommand(OnTestCommand, canExecute => true);
         }
 
@@ -64,6 +66,20 @@ namespace Intepreter.ViewModel
             _service.SaveAllToBinaryFile(Editor, Output);
         }
 
+        private void OnLoadAllFromBinaryFileCommand(object args)
+        {
+            var openDlg = new OpenFileDialog
+            {
+                Filter = "Бинарный файл(*.BIN)|*.BIN",
+                CheckFileExists = true
+            };
+
+            if (openDlg.ShowDialog() == true)
+            {
+                _service.LoadAllFromBinaryFile(Editor, Output, openDlg.FileName);
+            }
+        }
+
         private void OnTestCommand(object args)
         {
             _service.PerformAll(Editor, Output);
@@ -71,7 +87,6 @@ namespace Intepreter.ViewModel
 
 
         #endregion
-
 
         private readonly OperationPerfomerService _service;
     }

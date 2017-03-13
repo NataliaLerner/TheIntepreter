@@ -12,7 +12,7 @@
         </xsd:element>
       </xsd:sequence>
       
-      <xsd:attribute name='name' default='default' />
+      <xsd:attribute name='name' default='default.bin' />
       
     </xsd:complexType>
   </xsd:element>
