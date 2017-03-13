@@ -16,8 +16,11 @@ namespace Intepreter.Service
             _settings.Schemas.Add("",
                 @"E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\Model\IntepreterSchema.xsd");
             _settings.ValidationType = ValidationType.Schema;
+
+            _fileName = "default";
         }
 
+        //В планах
         public void SyncEditorWithOutput(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output)
         {
             if (editor == null)
@@ -60,11 +63,19 @@ namespace Intepreter.Service
 
                             num32 = Operations.ExecuteOperation(num32);
 
-                            outputBuilder.AppendFormat("Operation {0} = register1: {1}, regisetr2: {2} register3: {3}\n",
+                            outputBuilder.AppendFormat(
+                                "Operation {0} = register1: {1}, regisetr2: {2} register3: {3}\n",
                                 OperationCore.GetOperation(num32),
                                 OperationCore.GetRegister(num32, 1),
                                 OperationCore.GetRegister(num32, 2),
                                 OperationCore.GetRegister(num32, 3));
+                        }
+                        else if (reader.Name == "File")
+                        {
+                            if (reader[0] != null)
+                            {
+                                _fileName = reader[0];
+                            }
                         }
 
                         output.Text = outputBuilder.ToString();
@@ -79,25 +90,57 @@ namespace Intepreter.Service
             {
                 output.AppendLine(e.Message);
             }
+            catch (ArgumentException e)
+            {
+                output.AppendLine(e.Message);
+            }
         }
 
-        public string Perform(XmlNode node)
+        public void SaveAllToBinaryFile(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output)
         {
             try
             {
+                using (var binWriter = new BinaryWriter(File.Open(_fileName, FileMode.OpenOrCreate)))
+                {
+                    using (var reader = XmlReader.Create(new StringReader(editor.Text), _settings))
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader.Name == "Number")
+                            {
+                                var num32 = 0;
+
+                                num32 = OperationCore.SetRegister(num32, int.Parse(reader[0]), 1);
+                                num32 = OperationCore.SetRegister(num32, int.Parse(reader[1]), 2);
+                                num32 = OperationCore.SetRegister(num32, int.Parse(reader[2]), 3);
+                                num32 = OperationCore.SetOperation(num32, int.Parse(reader[3]));
+
+                                binWriter.Write(num32);
+                            }
+                        }
+                    }
+                }
             }
             catch (XmlException e)
             {
-                return e.Message;
+                output.AppendLine(e.Message);
             }
-
-            return "";
+            catch (XmlSchemaValidationException e)
+            {
+                output.AppendLine(e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                output.AppendLine(e.Message);
+            }
         }
 
-        private readonly XmlReaderSettings _settings;
+        public void LoadAllFromBinaryFile(SimpleTextEditorViewModel editor)
+        {
 
-        private const string RegisterString =  "Register";
-        private const string NumberString =    "Number";
-        private const string OperationString = "Operation";
+        }
+
+        private string _fileName;
+        private readonly XmlReaderSettings _settings;
     }
 }

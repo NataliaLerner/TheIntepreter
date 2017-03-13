@@ -20,9 +20,15 @@ namespace Intepreter.ViewModel
         public SimpleTextEditorViewModel Editor { get; } = new SimpleTextEditorViewModel();
         public SimpleTextEditorViewModel Output { get; } = new SimpleTextEditorViewModel();
 
+        #region Commands
+
         public ICommand EditorTextChangedCommand { get; }
-        public ICommand TestCommand { get; }
         public ICommand PerformCommand { get; }
+        public ICommand SaveAllToBinaryFileCommand { get; }
+
+        public ICommand TestCommand { get; }
+
+        #endregion
 
         public MainViewModel(OperationPerfomerService service)
         {
@@ -35,12 +41,27 @@ namespace Intepreter.ViewModel
 
             EditorTextChangedCommand = new MyCommand(OnEditorTextChangedCommand, canExecute => true);
             PerformCommand = new MyCommand(OnPerformCommand, canExecute => true);
+            SaveAllToBinaryFileCommand = new MyCommand(OnSaveAllToBinaryFileCommand, canExecute => true);
             TestCommand = new MyCommand(OnTestCommand, canExecute => true);
         }
 
+
+
+        #region Command Methods
+
         private void OnEditorTextChangedCommand(object args)
         {
-            
+
+        }
+
+        private void OnPerformCommand(object args)
+        {
+            _service.PerformAll(Editor, Output);
+        }
+
+        private void OnSaveAllToBinaryFileCommand(object args)
+        {
+            _service.SaveAllToBinaryFile(Editor, Output);
         }
 
         private void OnTestCommand(object args)
@@ -48,10 +69,9 @@ namespace Intepreter.ViewModel
             _service.PerformAll(Editor, Output);
         }
 
-        private void OnPerformCommand(object args)
-        {
-            _service.PerformAll(Editor, Output);
-        }
+
+        #endregion
+
 
         private readonly OperationPerfomerService _service;
     }

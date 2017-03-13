@@ -11,6 +11,9 @@
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
+      
+      <xsd:attribute name='name' default='default' />
+      
     </xsd:complexType>
   </xsd:element>
 </xsd:schema>
