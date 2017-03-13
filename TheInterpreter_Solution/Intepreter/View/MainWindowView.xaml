@@ -9,17 +9,17 @@
         xmlns:cmd="http://www.galasoft.ch/mvvmlight"
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+        Title="Intepreter" Height="350" Width="525" WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="TextWrapping" Value="Wrap"></Setter>
-            <Setter Property="AcceptsReturn" Value="True"></Setter>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
             <Style.Triggers>
                 <Trigger Property="Control.IsFocused" Value="True">
-                    <Setter Property="Control.Background" Value="LemonChiffon"></Setter>
+                    <Setter Property="Control.Background" Value="LemonChiffon"/>
                 </Trigger>
                 <Trigger Property="Control.IsFocused" Value="False">
-                    <Setter Property="Control.Background" Value="White"></Setter>
+                    <Setter Property="Control.Background" Value="White"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -40,15 +40,19 @@
 
         <Menu Grid.ColumnSpan="2" Grid.Row="0">
             <MenuItem Header="Файл">
-                <MenuItem Header="Загрузить с файла"></MenuItem>
+                <MenuItem Header="Загрузить с файла"/>
+                <MenuItem Header="Test"/>
             </MenuItem>
+            <MenuItem Header="Выполнить" Command="{Binding PerformCommand}"/>
         </Menu>
 
 
         <ScrollViewer Grid.Column="0" Grid.Row="1" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <TextBox Text="{Binding Editor.Text}">
+            
+            <TextBox Text="{Binding Editor.Text, Mode=TwoWay}"
+                     AcceptsTab="True">
                 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
@@ -58,17 +62,20 @@
                 
             </TextBox>
         </ScrollViewer>
-
+        
+        
         <ScrollViewer Grid.Column="1" Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
             <Canvas Background="Bisque"></Canvas>
         </ScrollViewer>
-
+        
+        
         <ScrollViewer Grid.ColumnSpan="2" Grid.Row="2" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <TextBox Text="{Binding Output.Text}">
+            <TextBox Text="{Binding Output.Text}" 
+                     IsReadOnly="True">
                 
             </TextBox>
         </ScrollViewer>

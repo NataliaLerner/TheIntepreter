@@ -7,3 +7,5 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\TestConsol
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.Core.pdb
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.exe
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.Properties.Resources.resources
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.csproj.GenerateResource.Cache

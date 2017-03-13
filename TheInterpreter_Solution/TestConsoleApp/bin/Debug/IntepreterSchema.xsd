@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IntepreterSchema"
+    targetNamespace="http://tempuri.org/IntepreterSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/IntepreterSchema.xsd"
+    xmlns:mstns="http://tempuri.org/IntepreterSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="File">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Number" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="Register1" type="xs:int" use="required"/>
+            <xs:attribute name="Register2" type="xs:int" use="required"/>
+            <xs:attribute name="Register3" type="xs:int" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

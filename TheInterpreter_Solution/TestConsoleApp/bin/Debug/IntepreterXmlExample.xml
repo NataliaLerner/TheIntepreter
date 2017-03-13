@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<File file="in.txt">
+  <Number register1="15" register2="15" register3="15" operation="2" />
+</File>

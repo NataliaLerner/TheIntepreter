@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Intepreter.Properties {
+namespace TestConsoleApp.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Intepreter.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Intepreter.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TestConsoleApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,28 +57,6 @@ namespace Intepreter.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;xs:schema id=&quot;IntepreterSchema&quot;
-        ///    targetNamespace=&quot;http://tempuri.org/IntepreterSchema.xsd&quot;
-        ///    elementFormDefault=&quot;qualified&quot;
-        ///    xmlns=&quot;http://tempuri.org/IntepreterSchema.xsd&quot;
-        ///    xmlns:mstns=&quot;http://tempuri.org/IntepreterSchema.xsd&quot;
-        ///    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
-        ///&gt;
-        ///  &lt;xs:element name=&quot;File&quot;&gt;
-        ///    &lt;xs:complexType&gt;
-        ///      &lt;xs:sequence&gt;
-        ///        &lt;xs:element name=&quot;Number&quot; maxOccurs=&quot;unbounded&quot;&gt;
-        ///          &lt;xs:complexType&gt;
-        ///            &lt;xs:at [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string IntepreterSchema {
-            get {
-                return ResourceManager.GetString("IntepreterSchema", resourceCulture);
             }
         }
     }
