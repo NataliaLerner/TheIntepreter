@@ -59,7 +59,8 @@ namespace Intepreter.ViewModel.Editors
 
         public void ClearAll()
         {
-            Text = "";
+            if (Text != "\r\n")
+                Text = "\r\n";
         }
 
         private string _text;

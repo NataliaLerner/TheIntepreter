@@ -27,6 +27,7 @@ namespace Intepreter.ViewModel
         public ICommand PerformCommand { get; }
         public ICommand SaveAllToBinaryFileCommand { get; }
         public ICommand LoadAllFromBinaryFileCommand { get; }
+        public ICommand ClearOutputCommand { get; }
         public ICommand TestCommand { get; }
 
         #endregion
@@ -44,10 +45,9 @@ namespace Intepreter.ViewModel
             PerformCommand = new MyCommand(OnPerformCommand, canExecute => true);
             SaveAllToBinaryFileCommand = new MyCommand(OnSaveAllToBinaryFileCommand, canExecute => true);
             LoadAllFromBinaryFileCommand = new MyCommand(OnLoadAllFromBinaryFileCommand, canExecute => true);
+            ClearOutputCommand = new MyCommand(OnClearOutputCommand, canExecute => true);
             TestCommand = new MyCommand(OnTestCommand, canExecute => true);
         }
-
-
 
         #region Command Methods
 
@@ -85,6 +85,10 @@ namespace Intepreter.ViewModel
             _service.PerformAll(Editor, Output);
         }
 
+        private void OnClearOutputCommand(object args)
+        {
+            Output.ClearAll();
+        }
 
         #endregion
 
