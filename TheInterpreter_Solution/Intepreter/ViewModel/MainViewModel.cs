@@ -7,66 +7,53 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 using Intepreter.Command;
 using Intepreter.ViewModel.Editors;
+using Intepreter.ViewModel.Editors.GraphicEditor;
 using Intepreter.Service;
+
 using Microsoft.Win32;
+
+using DevExpress.Mvvm.DataAnnotations;
 
 namespace Intepreter.ViewModel
 {
-    class MainViewModel :
-        ViewModelBase
+    public class MainViewModel :
+        DevExpress.Mvvm.ViewModelBase
     {
-        public SimpleTextEditorViewModel Editor { get; } = new SimpleTextEditorViewModel();
-        public SimpleTextEditorViewModel Output { get; } = new SimpleTextEditorViewModel();
+        public OperationTextEditorViewModel    TextEditor { get; } =    new OperationTextEditorViewModel();
+        public SimpleTextEditorViewModel       Output { get; } =        new SimpleTextEditorViewModel();
+
+        public OperationListViewModel Names { get; } = new OperationListViewModel();
+
+        public MainViewModel()
+        { }
 
         #region Commands
 
-        public ICommand EditorTextChangedCommand { get; }
-        public ICommand PerformCommand { get; }
-        public ICommand SaveAllToBinaryFileCommand { get; }
-        public ICommand LoadAllFromBinaryFileCommand { get; }
-        public ICommand ClearOutputCommand { get; }
-        public ICommand TestCommand { get; }
 
-        #endregion
-
-        public MainViewModel(OperationPerfomerService service)
+        [Command]
+        public void Test(object args)
         {
-            if (service == null)
-            {
-                throw new ArgumentNullException(nameof(service));
-            }
-
-            _service = service;
-
-            EditorTextChangedCommand = new MyCommand(OnEditorTextChangedCommand, canExecute => true);
-            PerformCommand = new MyCommand(OnPerformCommand, canExecute => true);
-            SaveAllToBinaryFileCommand = new MyCommand(OnSaveAllToBinaryFileCommand, canExecute => true);
-            LoadAllFromBinaryFileCommand = new MyCommand(OnLoadAllFromBinaryFileCommand, canExecute => true);
-            ClearOutputCommand = new MyCommand(OnClearOutputCommand, canExecute => true);
-            TestCommand = new MyCommand(OnTestCommand, canExecute => true);
+            MessageBox.Show("Ok");
         }
 
-        #region Command Methods
 
-        private void OnEditorTextChangedCommand(object args)
+        [Command]
+        public void Perform(object args)
         {
-
+            _service.PerformAllFromTextEditor(TextEditor, Output);
         }
 
-        private void OnPerformCommand(object args)
+
+        [Command]
+        public void SaveAllToBinaryFile(object args)
         {
-            _service.PerformAll(Editor, Output);
+            _service.SaveAllToBinaryFile(TextEditor, Output);
         }
 
-        private void OnSaveAllToBinaryFileCommand(object args)
-        {
-            _service.SaveAllToBinaryFile(Editor, Output);
-        }
-
-        private void OnLoadAllFromBinaryFileCommand(object args)
+       [Command]
+        public void LoadAllFromBinaryFile(object args)
         {
             var openDlg = new OpenFileDialog
             {
@@ -76,22 +63,25 @@ namespace Intepreter.ViewModel
 
             if (openDlg.ShowDialog() == true)
             {
-                _service.LoadAllFromBinaryFile(Editor, Output, openDlg.FileName);
+                //_service.LoadAllFromBinaryFile_Test(TextEditor, GraphicEditor, Output, openDlg.FileName);
+                _service.LoadAllFromBinaryFile(TextEditor, Output, openDlg.FileName);
             }
         }
 
-        private void OnTestCommand(object args)
+        
+        public void Test1(object args)
         {
-            _service.PerformAll(Editor, Output);
+            _service.PerformAllFromTextEditor(TextEditor, Output);
         }
 
-        private void OnClearOutputCommand(object args)
+       
+        public void ClearOutput(object args)
         {
             Output.ClearAll();
         }
 
         #endregion
 
-        private readonly OperationPerfomerService _service;
+        private readonly OperationPerfomerService _service = new OperationPerfomerService();
     }
 }

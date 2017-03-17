@@ -3,8 +3,8 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Schema;
 
+using Intepreter.Model.Abstract;
 using Intepreter.Model.Operations;
 using Intepreter.ViewModel.Editors;
 
@@ -40,15 +40,13 @@ namespace Intepreter.Service
 
         
         /// <summary>
-        /// Берет операции из editor и кладет результат в output
+        /// Берет операции из TextEditor и кладет результат в output
         /// </summary>
-        /// <param name="editor"></param>
-        /// <param name="output"></param>
-        public void PerformAll(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output)
+        public void PerformAllFromTextEditor(IEditor editor, SimpleTextEditorViewModel output)
         {
             try
             {
-                using (var reader = XmlReader.Create(new StringReader(editor.Text), _settings))
+                using (var reader = editor.CreateXmlReader(_settings))
                 {
                     var outputBuilder = new StringBuilder();
 
@@ -84,15 +82,7 @@ namespace Intepreter.Service
                     }
                 }
             }
-            catch (XmlException e)
-            {
-                output.AppendLine(e.Message);
-            }
-            catch (XmlSchemaValidationException e)
-            {
-                output.AppendLine(e.Message);
-            }
-            catch (ArgumentException e)
+            catch (Exception e)
             {
                 output.AppendLine(e.Message);
             }
@@ -103,13 +93,13 @@ namespace Intepreter.Service
         /// </summary>
         /// <param name="editor"></param>
         /// <param name="output"></param>
-        public void SaveAllToBinaryFile(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output)
+        public void SaveAllToBinaryFile(IEditor editor, ISimpleTextEditor output)
         {
             try
             {
                 using (var binWriter = new BinaryWriter(File.Open(_fileName, FileMode.OpenOrCreate)))
                 {
-                    using (var reader = XmlReader.Create(new StringReader(editor.Text), _settings))
+                    using (var reader = editor.CreateXmlReader(_settings))
                     {
                         while (reader.Read())
                         {
@@ -128,15 +118,7 @@ namespace Intepreter.Service
                     }
                 }
             }
-            catch (XmlException e)
-            {
-                output.AppendLine(e.Message);
-            }
-            catch (XmlSchemaValidationException e)
-            {
-                output.AppendLine(e.Message);
-            }
-            catch (ArgumentException e)
+            catch (Exception e)
             {
                 output.AppendLine(e.Message);
             }
@@ -145,9 +127,7 @@ namespace Intepreter.Service
         /// <summary>
         /// Загрузка в Edit из бинарного файла. Output для вывода ошибок
         /// </summary>
-        /// <param name="editor">Редактор</param>
-        /// <param name="output">Вывод</param>
-        public void LoadAllFromBinaryFile(SimpleTextEditorViewModel editor, SimpleTextEditorViewModel output, string fileName)
+        public void LoadAllFromBinaryFile(IEditor editor, SimpleTextEditorViewModel output, string fileName)
         {
             if (fileName != null)
             {
@@ -158,7 +138,7 @@ namespace Intepreter.Service
             {
                 using (var binReader = new BinaryReader(File.Open(_fileName, FileMode.Open)))
                 {
-                    var editorXmlMarkup = new XDocument(
+                    var markup = new XDocument(
                         new XElement("File",
                             new XAttribute("name", _fileName)));
 
@@ -166,22 +146,59 @@ namespace Intepreter.Service
                     {
                         var num32 = binReader.ReadInt32();
 
-                        editorXmlMarkup.Root.Add
+                        markup.Root.Add
                         (new XElement("Number",
-                            new XAttribute("register1", OperationCore.GetStringRegister(num32, 1, 10)),
-                            new XAttribute("register2", OperationCore.GetStringRegister(num32, 2, 10)),
-                            new XAttribute("register3", OperationCore.GetStringRegister(num32, 3, 10)),
-                            new XAttribute("operation", OperationCore.GetStringOperation(num32))));
+                            new XAttribute("r1", OperationCore.GetStringRegister(num32, 1, 10)),
+                            new XAttribute("r2", OperationCore.GetStringRegister(num32, 2, 10)),
+                            new XAttribute("r3", OperationCore.GetStringRegister(num32, 3, 10)),
+                            new XAttribute("op", OperationCore.GetStringOperation(num32))));
 
-                        editor.Text = editorXmlMarkup.ToString();
+                        
                     }
+
+                    editor.LoadXmlMarkup(markup);
                 }
             }
-            catch (ArgumentException e)
+            catch (Exception e)
             {
                 output.AppendLine(e.Message);
             }
-            catch (IOException e)
+        }
+
+        public void LoadAllFromBinaryFile_Test(IEditor textEditor, IEditor graphicEditor, SimpleTextEditorViewModel output, string fileName)
+        {
+            if (fileName != null)
+            {
+                _fileName = fileName;
+            }
+
+            try
+            {
+                using (var binReader = new BinaryReader(File.Open(_fileName, FileMode.Open)))
+                {
+                    var markup = new XDocument(
+                        new XElement("File",
+                            new XAttribute("name", _fileName)));
+
+                    while (binReader.BaseStream.Position != binReader.BaseStream.Length)
+                    {
+                        var num32 = binReader.ReadInt32();
+
+                        markup.Root.Add
+                        (new XElement("Number",
+                            new XAttribute("r1", OperationCore.GetStringRegister(num32, 1, 10)),
+                            new XAttribute("r2", OperationCore.GetStringRegister(num32, 2, 10)),
+                            new XAttribute("r3", OperationCore.GetStringRegister(num32, 3, 10)),
+                            new XAttribute("op", OperationCore.GetStringOperation(num32))));
+
+                        
+                    }
+
+                    textEditor.LoadXmlMarkup(markup);
+                    graphicEditor.LoadXmlMarkup(markup);
+                }
+            }
+            catch (Exception e)
             {
                 output.AppendLine(e.Message);
             }

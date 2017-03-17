@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Intepreter.Model.Operations
 {
@@ -14,7 +15,7 @@ namespace Intepreter.Model.Operations
         {
             Func<int, int> operation;
 
-            if (OperationsFuncs.TryGetValue(OperationCore.GetOperation(num32), out operation) == false)
+            if (OperationFuncs.TryGetValue(OperationCore.GetOperation(num32), out operation) == false)
             {
                 throw new ArgumentException($"Операция под номером {OperationCore.GetStringOperation(num32)} найдена");
             }
@@ -70,10 +71,17 @@ namespace Intepreter.Model.Operations
             {"AND", 3 }
         };
 
+        public static List<string> OperationNamesList { get; set; } = new List<string>()
+        {
+            "NOT",
+            "OR",
+            "AND"
+        };
+
         /// <summary>
         ///     Словарь операций
         /// </summary>
-        private static readonly Dictionary<int, Func<int, int>> OperationsFuncs = new Dictionary<int, Func<int, int>>
+        public static readonly Dictionary<int, Func<int, int>> OperationFuncs = new Dictionary<int, Func<int, int>>
         {
             {1, NOT_1_operation},
             {2, OR_2_operation},

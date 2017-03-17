@@ -3,13 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Intepreter.View"
         
+        xmlns:local="clr-namespace:Intepreter.View"
+        xmlns:viewModel="clr-namespace:Intepreter.ViewModel"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:cmd="http://www.galasoft.ch/mvvmlight"
-
+        xmlns:b="clr-namespace:Intepreter.Behavior"
+        
         mc:Ignorable="d"
         Title="Intepreter" Height="350" Width="525" WindowState="Maximized">
+    
+    <Window.DataContext>
+        <viewModel:MainViewModel/>    
+    </Window.DataContext>
+    
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -36,7 +43,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
 
     
@@ -44,14 +51,13 @@
             <MenuItem Header="Файл">
                 <MenuItem Header="Загрузить" Command="{Binding LoadAllFromBinaryFileCommand}"/>
                 <MenuItem Header="Сохранить" Command="{Binding SaveAllToBinaryFileCommand}"/>
-                <MenuItem Header="Test"/>
             </MenuItem>
             <MenuItem Header="Выполнить" Command="{Binding PerformCommand}"/>
             <MenuItem Header="Очистить вывод" Command="{Binding ClearOutputCommand}"/>
         </Menu>
 
 
-        <GridSplitter Grid.Row="1" Grid.Column="1" 
+        <GridSplitter Grid.Row="1" Grid.Column="1" Grid.RowSpan="3"
                       Width="5"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Stretch"/>
@@ -64,34 +70,47 @@
         <ScrollViewer Grid.Column="0" Grid.Row="1" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            
-            <TextBox Text="{Binding Editor.Text, Mode=TwoWay}"
+
+            <TextBox Text="{Binding TextEditor.Text, Mode=TwoWay}"
                      AcceptsTab="True">
-                
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="TextChanged">
-                        <cmd:EventToCommand Command="{Binding EditorTextChangedCommand}" PassEventArgsToCommand="True"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                
             </TextBox>
         </ScrollViewer>
-        
-        
+
+
         <ScrollViewer Grid.Column="2" Grid.Row="1" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <Canvas Background="Bisque"></Canvas>
         </ScrollViewer>
         
         
-        <ScrollViewer Grid.ColumnSpan="3" Grid.Row="3" 
+        <ScrollViewer Grid.Column="0" Grid.Row="3" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
             <TextBox Text="{Binding Output.Text}" 
                      IsReadOnly="True">
                 
             </TextBox>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="2" Grid.Row="3">
+            <ListView ItemsSource="{Binding Names.List}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Bisque" BorderThickness="2" Margin="2">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{Binding OperationName}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding OperationCode}" FontWeight="Bold"/>
+
+                            </StackPanel>
+
+                            <i:Interaction.Behaviors>
+                                <b:FrameworkElementDragBehavior/>
+                            </i:Interaction.Behaviors>
+
+                        </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
         </ScrollViewer>
     </Grid>
 </Window>

@@ -25,3 +25,8 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Intepreter.Pro
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Intepreter.csproj.GenerateResource.Cache
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Intepreter.exe
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Intepreter.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.UI.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.pdb
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.UI.pdb

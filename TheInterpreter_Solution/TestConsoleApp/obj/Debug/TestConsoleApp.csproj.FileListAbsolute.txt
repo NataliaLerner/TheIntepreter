@@ -9,3 +9,7 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.pdb
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.Properties.Resources.resources
 E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\obj\Debug\TestConsoleApp.csproj.GenerateResource.Cache
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\System.Windows.Interactivity.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\DevExpress.Mvvm.dll
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\Intepreter.exe.config
+E:\Git\TheIntepreter\TheInterpreter_Solution\TestConsoleApp\bin\Debug\DevExpress.Mvvm.pdb

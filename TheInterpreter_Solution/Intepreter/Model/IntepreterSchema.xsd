@@ -4,10 +4,10 @@
       <xsd:sequence>
         <xsd:element name='Number' minOccurs='1' maxOccurs='unbounded'>
           <xsd:complexType>
-            <xsd:attribute name='register1' type='xsd:int' use='required'/>
-            <xsd:attribute name='register2' type='xsd:int' use='required'/>
-            <xsd:attribute name='register3' type='xsd:int' use='required'/>
-            <xsd:attribute name='operation' type='xsd:int' use='required'/>
+            <xsd:attribute name='r1' type='xsd:int' use='required'/>
+            <xsd:attribute name='r2' type='xsd:int' use='required'/>
+            <xsd:attribute name='r3' type='xsd:int' use='required'/>
+            <xsd:attribute name='op' type='xsd:int' use='required'/>
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>

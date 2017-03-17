@@ -19,10 +19,7 @@ namespace Intepreter
     {
         public App()
         {
-            var mainWindow = new MainWindowView
-            {
-                DataContext = new MainViewModel(new OperationPerfomerService())
-            };
+            var mainWindow = new MainWindowView();
 
             mainWindow.Show();
         }

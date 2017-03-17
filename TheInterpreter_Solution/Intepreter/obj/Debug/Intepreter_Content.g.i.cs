@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/intepreterschema.xsd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/3.png")]
 
 

@@ -6,6 +6,7 @@
 
         void AppendNum(int num32);
         void AppendLine(string line);
+        void ClearAll();
     }
 }
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Text;
+using System.Xml;
 
 using Intepreter.Model.Operations;
 using Intepreter.Model.Abstract;
@@ -12,7 +14,7 @@ namespace Intepreter.ViewModel.Editors
         public string Text
         {
             get { return _text;}
-            set { UpdateValue(value, ref _text);}
+            set { UpdateValue(value, ref _text); }
         }
 
         public void AppendNum(int num32)
@@ -44,6 +46,13 @@ namespace Intepreter.ViewModel.Editors
             Text = string.Concat(Text, Environment.NewLine, line);
         }
 
+        public void ClearAll()
+        {
+            if (Text != "\r\n")
+                Text = "\r\n";
+        }
+
+
         public SimpleTextEditorViewModel(string initLine)
         {
             if (initLine == null)
@@ -56,12 +65,6 @@ namespace Intepreter.ViewModel.Editors
 
         public SimpleTextEditorViewModel() : this("")
         { }
-
-        public void ClearAll()
-        {
-            if (Text != "\r\n")
-                Text = "\r\n";
-        }
 
         private string _text;
     }
