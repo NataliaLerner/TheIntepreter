@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace Intepreter.ViewModel
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase1 : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

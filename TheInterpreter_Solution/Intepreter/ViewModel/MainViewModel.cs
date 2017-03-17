@@ -68,13 +68,7 @@ namespace Intepreter.ViewModel
             }
         }
 
-        
-        public void Test1(object args)
-        {
-            _service.PerformAllFromTextEditor(TextEditor, Output);
-        }
-
-       
+        [Command]
         public void ClearOutput(object args)
         {
             Output.ClearAll();

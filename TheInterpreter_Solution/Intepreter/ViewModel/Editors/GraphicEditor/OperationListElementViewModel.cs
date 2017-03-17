@@ -5,7 +5,9 @@ using System.Xml.Linq;
 using Intepreter.Model;
 using Intepreter.Behavior;
 using Intepreter.Model.Operations;
+
 using Intepreter.Model.Abstract;
+using DevExpress.Mvvm;
 
 namespace Intepreter.ViewModel.Editors.GraphicEditor
 {
@@ -26,8 +28,8 @@ namespace Intepreter.ViewModel.Editors.GraphicEditor
 
         public bool IsSelected
         {
-            get { return _isSelected; }
-            set { UpdateValue(value, ref _isSelected); }
+            get { return  GetProperty(() => IsSelected); }
+            set { SetProperty(() => IsSelected, value); }
         }
 
         public OperationListElementViewModel(string name, int code)

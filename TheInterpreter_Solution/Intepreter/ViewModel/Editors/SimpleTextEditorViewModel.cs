@@ -5,16 +5,17 @@ using System.Xml;
 
 using Intepreter.Model.Operations;
 using Intepreter.Model.Abstract;
+using DevExpress.Mvvm.Xpf;
 
 namespace Intepreter.ViewModel.Editors
 {
-    public class SimpleTextEditorViewModel : 
-        ViewModelBase, ISimpleTextEditor
+    public class SimpleTextEditorViewModel :
+        DevExpress.Mvvm.ViewModelBase, ISimpleTextEditor
     {
         public string Text
         {
-            get { return _text;}
-            set { UpdateValue(value, ref _text); }
+            get { return GetProperty(() => Text); }
+            set { SetProperty(() => Text, value); }
         }
 
         public void AppendNum(int num32)
@@ -48,8 +49,8 @@ namespace Intepreter.ViewModel.Editors
 
         public void ClearAll()
         {
-            if (Text != "\r\n")
-                Text = "\r\n";
+            if (Text != "")
+                Text = "";
         }
 
 
@@ -60,12 +61,10 @@ namespace Intepreter.ViewModel.Editors
                 throw new ArgumentNullException(nameof(initLine));
             }
 
-            _text = initLine + Environment.NewLine;
+            Text = initLine;
         }
 
         public SimpleTextEditorViewModel() : this("")
         { }
-
-        private string _text;
     }
 }
