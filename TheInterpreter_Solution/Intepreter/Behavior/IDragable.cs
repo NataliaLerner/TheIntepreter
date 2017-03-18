@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Intepreter.Model.Abstract
+namespace Intepreter.Behavior
 {
     public interface IDragable
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
-using Intepreter.Model.Abstract;
+using Intepreter.Behavior;
 
 using DevExpress.Mvvm;
+
 
 namespace Intepreter.Controls.GraphicOperationBuilder
 {

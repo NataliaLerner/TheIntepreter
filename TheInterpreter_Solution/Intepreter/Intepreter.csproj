@@ -95,8 +95,8 @@
       <DependentUpon>GraphicOperationEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorViewModelBase.cs" />
-    <Compile Include="Model\Abstract\IDragable.cs" />
-    <Compile Include="Model\Abstract\IDropable.cs" />
+    <Compile Include="Behavior\IDragable.cs" />
+    <Compile Include="Behavior\IDropable.cs" />
     <Compile Include="Model\Abstract\IEditor.cs" />
     <Compile Include="Model\Abstract\ISimpleTextEditor.cs" />
     <Compile Include="Model\Node.cs" />

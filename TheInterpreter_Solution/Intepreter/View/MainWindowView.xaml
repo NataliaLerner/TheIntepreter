@@ -35,7 +35,7 @@
         </Style>
     </Window.Resources>
 
-
+    
     <Grid x:Name="LayoutRoot">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -59,6 +59,7 @@
             <MenuItem Header="Очистить вывод" Command="{Binding ClearOutputCommand}"/>
         </Menu>
 
+        
         <!--#region GridSplitters-->
         <GridSplitter Grid.Row="1" Grid.Column="1" Grid.RowSpan="3"
                       Width="5"
