@@ -30,5 +30,7 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvv
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.UI.dll
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.pdb
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\bin\Debug\DevExpress.Mvvm.UI.pdb
-E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\View\GraphicOperationBuilderViewxaml.g.cs
-E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\View\GraphicOperationBuilderViewxaml.baml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationEditor\GraphicOperationEditorView.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationEditor\GraphicOperationEditorView.baml
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationBuilder\GraphicOperationBuilderView.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationBuilder\GraphicOperationBuilderView.baml

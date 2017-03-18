@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\App.xaml
-2-1100243401
+3-1985594745
 
-28-2069016991
+2939609323
 75-695704023
-View\GraphicOperationBuilderViewxaml.xaml;View\MainWindowView.xaml;
+Controls\GraphicOperationBuilder\GraphicOperationBuilderView.xaml;Controls\GraphicOperationEditor\GraphicOperationEditorView.xaml;View\MainWindowView.xaml;
 
 False
 

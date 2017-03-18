@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Text;
-using System.Xml;
+
 
 using Intepreter.Model.Operations;
 using Intepreter.Model.Abstract;
-using DevExpress.Mvvm.Xpf;
 
 namespace Intepreter.ViewModel.Editors
 {

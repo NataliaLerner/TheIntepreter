@@ -87,9 +87,16 @@
     <Compile Include="Behavior\FrameworkElementDragBehavior.cs" />
     <Compile Include="Behavior\FrameworkElementDropBehavior.cs" />
     <Compile Include="Command\MyCommand.cs" />
+    <Compile Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderView.xaml.cs">
+      <DependentUpon>GraphicOperationBuilderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderViewModel.cs" />
+    <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorView.xaml.cs">
+      <DependentUpon>GraphicOperationEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorViewModelBase.cs" />
     <Compile Include="Model\Abstract\IDragable.cs" />
     <Compile Include="Model\Abstract\IDropable.cs" />
-    <Compile Include="Model\Abstract\IOperationGraphicEditor.cs" />
     <Compile Include="Model\Abstract\IEditor.cs" />
     <Compile Include="Model\Abstract\ISimpleTextEditor.cs" />
     <Compile Include="Model\Node.cs" />
@@ -98,10 +105,13 @@
     <Compile Include="Model\Operations\OperationCore.cs" />
     <Compile Include="Service\OperationPerfomerService.cs" />
     <Compile Include="Service\ValidXmlMarkup.cs" />
-    <Compile Include="ViewModel\Editors\GraphicEditor\OperationListViewModel.cs" />
     <Compile Include="ViewModel\Editors\OperationTextEditorViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Page Include="View\GraphicOperationBuilderViewxaml.xaml">
+    <Page Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GraphicOperationEditor\GraphicOperationEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,12 +124,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\Editors\SimpleTextEditorViewModel.cs" />
-    <Compile Include="ViewModel\Editors\GraphicEditor\OperationListElementViewModel.cs" />
+    <Compile Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderElementViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\GraphicOperationBuilderViewxaml.xaml.cs">
-      <DependentUpon>GraphicOperationBuilderViewxaml.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -156,7 +163,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\Editors\GraphicEditor\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

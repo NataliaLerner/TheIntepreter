@@ -1,36 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
-using Intepreter.Command;
 using Intepreter.ViewModel.Editors;
-using Intepreter.ViewModel.Editors.GraphicEditor;
 using Intepreter.Service;
+using Intepreter.Controls.GraphicOperationBuilder;
 
 using Microsoft.Win32;
 
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 
 namespace Intepreter.ViewModel
 {
     public class MainViewModel :
-        DevExpress.Mvvm.ViewModelBase
+        ViewModelBase
     {
-        public OperationTextEditorViewModel    TextEditor { get; } =    new OperationTextEditorViewModel();
-        public SimpleTextEditorViewModel       Output { get; } =        new SimpleTextEditorViewModel();
-
-        public OperationListViewModel Names { get; } = new OperationListViewModel();
+        public OperationTextEditorViewModel TextEditor { get; } =       new OperationTextEditorViewModel();
+        public SimpleTextEditorViewModel    Output { get; } =           new SimpleTextEditorViewModel();
+        public GraphicOperationBuilderViewModel GraphicBuilder { get; } = new GraphicOperationBuilderViewModel();
 
         public MainViewModel()
         { }
 
         #region Commands
-
 
         [Command]
         public void Test(object args)

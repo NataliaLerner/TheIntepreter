@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Intepreter.View
+namespace Intepreter.Controls.GraphicOperationEditor
 {
     /// <summary>
-    /// Interaction logic for GraphicOperationBuilderViewxaml.xaml
+    /// Interaction logic for GraphicOperationEditorView.xaml
     /// </summary>
-    public partial class GraphicOperationBuilderViewxaml : UserControl
+    public partial class GraphicOperationEditorView : UserControl
     {
-        public GraphicOperationBuilderViewxaml()
+        public GraphicOperationEditorView()
         {
             InitializeComponent();
         }
