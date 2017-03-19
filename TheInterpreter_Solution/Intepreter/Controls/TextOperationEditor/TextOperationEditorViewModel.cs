@@ -36,5 +36,12 @@ namespace Intepreter.Controls.TextOperationEditor
                 }
             }
         }
+
+        public XmlDocument UpdateXmlMarkup()
+        {
+            var markup = new XmlDocument();
+            markup.LoadXml(Text);
+            return markup;
+        }
     }
 }

@@ -20,5 +20,7 @@ namespace Intepreter.Model.Abstract
         /// </summary>
         /// <param name="markup"></param>
         void LoadXmlMarkup(XmlDocument markup);
+
+        XmlDocument UpdateXmlMarkup();
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Specialized;
+using System.IO;
 using System.Windows.Data;
 using System.Xml;
-using System.Xml.Linq;
+
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.Native;
+
 using Intepreter.Behavior;
 using Intepreter.Model.Abstract;
 
@@ -21,25 +20,23 @@ namespace Intepreter.Controls.GraphicOperationEditor
         public XmlDataProvider XmlData
         {
             get { return GetProperty(() => XmlData); }
-            set { SetProperty(() => value, XmlData); }
+            set { SetProperty(() => XmlData, value); }
         }
 
         public GraphicOperationEditorViewModel()
         {
-            XmlData = new XmlDataProvider
-            {
-                XPath = "File"
-            };
+            XmlData = new XmlDataProvider();
         }
 
         public XmlReader CreateXmlReader(XmlReaderSettings settings)
-        {
-            throw new NotImplementedException();
+        { 
+            return XmlReader.Create(new StringReader(XmlData.Document.OuterXml));
         }
 
         public void LoadXmlMarkup(XmlDocument markup)
         {
-            throw new NotImplementedException();
+            var testElem = markup.CreateElement("Test");
+            XmlData.Document = markup;
         }
 
         public void Drop(object data, int index = -1)
@@ -47,10 +44,9 @@ namespace Intepreter.Controls.GraphicOperationEditor
             throw new NotImplementedException();
         }
 
-        private void XmlMarkupChangedCallBack()
+        public XmlDocument UpdateXmlMarkup()
         {
-            
+            throw new NotImplementedException();
         }
-
     }
 }

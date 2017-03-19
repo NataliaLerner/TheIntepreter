@@ -5,10 +5,12 @@ using System.Text;
 using Intepreter.Model.Operations;
 using Intepreter.Model.Abstract;
 
+using DevExpress.Mvvm;
+
 namespace Intepreter.ViewModel.Editors
 {
     public class SimpleTextEditorViewModel :
-        DevExpress.Mvvm.ViewModelBase, ISimpleTextEditor
+        ViewModelBase, ISimpleTextEditor
     {
         public string Text
         {

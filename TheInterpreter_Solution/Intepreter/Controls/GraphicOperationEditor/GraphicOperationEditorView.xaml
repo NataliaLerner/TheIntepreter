@@ -6,11 +6,79 @@
              xmlns:local="clr-namespace:Intepreter.Controls.GraphicOperationEditor"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <local:GraphicOperationEditorView/>
-    </UserControl.DataContext>
-    
-    <Grid>
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="xmlValueBrush" Color="Blue" />
+        <SolidColorBrush x:Key="xmAttributeBrush" Color="Red" />
+        <SolidColorBrush x:Key="xmlTagBrush" Color="DarkMagenta" />
+        <SolidColorBrush x:Key="xmlMarkBrush" Color="Blue" />
+        <DataTemplate x:Key="attributeTemplate">
+            <StackPanel Orientation="Horizontal"
+                Margin="3,0,0,0"
+                HorizontalAlignment="Center">
+                <TextBlock Text="{Binding Path=Name}"
+                 Foreground="{StaticResource xmAttributeBrush}"/>
+                <TextBlock Text="=&quot;"
+                 Foreground="{StaticResource xmlMarkBrush}"/>
+                <TextBlock Text="{Binding Path=Value}"
+                 Foreground="{StaticResource xmlValueBrush}"/>
+                <TextBlock Text="&quot;"
+                 Foreground="{StaticResource xmlMarkBrush}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <HierarchicalDataTemplate x:Key="nodeTemplate">
+            <StackPanel Orientation="Horizontal"
+        Focusable="False">
+                <TextBlock x:Name="tbName" Text="?" />
+                <ItemsControl
+          ItemTemplate="{StaticResource attributeTemplate}"
+          ItemsSource="{Binding Path=Attributes}"
+          HorizontalAlignment="Center">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+            <HierarchicalDataTemplate.ItemsSource>
+                <Binding XPath="child::node()" />
+            </HierarchicalDataTemplate.ItemsSource>
+            <HierarchicalDataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Text">
+                    <Setter TargetName="tbName" Property="Text" Value="{Binding Path=Value}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Element">
+                    <Setter TargetName="tbName" Property="Text" Value="{Binding Path=Name}"/>
+                </DataTrigger>
+            </HierarchicalDataTemplate.Triggers>
+        </HierarchicalDataTemplate>
+
+        <!--<HierarchicalDataTemplate x:Key="NodeTemplate">
+            <TextBlock x:Name="text" Text="?" />
+
+            <HierarchicalDataTemplate.ItemsSource>
+                <Binding XPath="child::node()" />
+            </HierarchicalDataTemplate.ItemsSource>
             
-    </Grid>
+            <HierarchicalDataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Text">
+                    <Setter TargetName="text" Property="Text" Value="{Binding Path=Value}"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Element">
+                    <Setter TargetName="text" Property="Text" Value="{Binding Path=Name}"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Document">
+                    <Setter TargetName="text" Property="Text" Value="{Binding Path=DocumentName}"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=NodeType}" Value="Attribute">
+                    <Setter TargetName="text" Property="Text" Value="{Binding Path=Attribute}"></Setter>
+                </DataTrigger>
+            </HierarchicalDataTemplate.Triggers>
+        </HierarchicalDataTemplate>-->
+    </UserControl.Resources>
+    <StackPanel>
+        <TreeView ItemsSource="{Binding XmlData.Document}"
+                  ItemTemplate= "{StaticResource nodeTemplate}"/>
+    </StackPanel>
 </UserControl>

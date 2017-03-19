@@ -5,6 +5,7 @@ using Intepreter.ViewModel.Editors;
 using Intepreter.Service;
 using Intepreter.Controls.GraphicOperationBuilder;
 using Intepreter.Controls.TextOperationEditor;
+using Intepreter.Controls.GraphicOperationEditor;
 
 using Microsoft.Win32;
 
@@ -17,9 +18,10 @@ namespace Intepreter.ViewModel
     public class MainViewModel :
         ViewModelBase
     {
-        public TextOperationEditorViewModel TextEditor { get; } =       new TextOperationEditorViewModel();
-        public SimpleTextEditorViewModel    Output { get; } =           new SimpleTextEditorViewModel();
-        public GraphicOperationBuilderViewModel GraphicBuilder { get; } = new GraphicOperationBuilderViewModel();
+        public TextOperationEditorViewModel     TextEditor { get; } =       new TextOperationEditorViewModel();
+        public SimpleTextEditorViewModel        Output { get; } =           new SimpleTextEditorViewModel();
+        public GraphicOperationBuilderViewModel GraphicBuilder { get; } =   new GraphicOperationBuilderViewModel();
+        public GraphicOperationEditorViewModel  GraphicEditor { get; } =    new GraphicOperationEditorViewModel();
 
         public MainViewModel()
         { }
@@ -58,7 +60,7 @@ namespace Intepreter.ViewModel
             if (openDlg.ShowDialog() == true)
             {
                 //_service.LoadAllFromBinaryFile_Test(TextEditor, GraphicEditor, Output, openDlg.FileName);
-                _service.LoadAllFromBinaryFile(TextEditor, Output, openDlg.FileName);
+                _service.LoadAllFromBinaryFile(TextEditor, GraphicEditor, Output, openDlg.FileName);
             }
         }
 

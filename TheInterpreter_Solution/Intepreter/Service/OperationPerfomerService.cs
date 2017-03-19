@@ -46,7 +46,7 @@ namespace Intepreter.Service
         {
             try
             {
-                using (var reader = XmlReader.Create(new StringReader(_currentXmlMarkup.OuterXml)) /*editor.CreateXmlReader(_settings)*/)
+                using (var reader = XmlReader.Create(new StringReader(_currentXmlMarkup.OuterXml)))
                 {
                     var outputBuilder = new StringBuilder();
 
@@ -82,7 +82,11 @@ namespace Intepreter.Service
                     output.Text = outputBuilder.ToString();
                 }
             }
-            catch (XmlException e)
+            catch (NullReferenceException)
+            {
+                output.AppendLine("Отсутствует разметка");
+            }
+            catch (Exception e)
             {
                 output.AppendLine(e.Message);
             }
@@ -124,7 +128,7 @@ namespace Intepreter.Service
             }
         }
 
-        public void LoadAllFromBinaryFile(IOperationEditor textEditor, SimpleTextEditorViewModel output, string fileName)
+        public void LoadAllFromBinaryFile(IOperationEditor textEditor, IOperationEditor graphicEditor, SimpleTextEditorViewModel output, string fileName)
         {
             if (fileName != null)
             {
@@ -155,6 +159,7 @@ namespace Intepreter.Service
 
                     _currentXmlMarkup = markup;
                     textEditor.LoadXmlMarkup(_currentXmlMarkup);
+                    graphicEditor.LoadXmlMarkup(_currentXmlMarkup);
                 }
             }
             catch (Exception e)
