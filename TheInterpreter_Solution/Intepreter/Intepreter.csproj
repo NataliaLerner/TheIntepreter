@@ -94,17 +94,15 @@
     <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorView.xaml.cs">
       <DependentUpon>GraphicOperationEditorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorViewModelBase.cs" />
+    <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorViewModel.cs" />
     <Compile Include="Behavior\IDragable.cs" />
     <Compile Include="Behavior\IDropable.cs" />
-    <Compile Include="Model\Abstract\IEditor.cs" />
+    <Compile Include="Model\Abstract\IOperationEditor.cs" />
     <Compile Include="Model\Abstract\ISimpleTextEditor.cs" />
-    <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Operations\Constants.cs" />
     <Compile Include="Model\Operations\Operation.cs" />
     <Compile Include="Model\Operations\OperationCore.cs" />
     <Compile Include="Service\OperationPerfomerService.cs" />
-    <Compile Include="Service\ValidXmlMarkup.cs" />
     <Compile Include="ViewModel\Editors\OperationTextEditorViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderView.xaml">
@@ -125,8 +123,6 @@
     </Compile>
     <Compile Include="ViewModel\Editors\SimpleTextEditorViewModel.cs" />
     <Compile Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderElementViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -150,9 +146,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Model\IntepreterSchema.xsd">
+    <Content Include="Model\IntepreterSchema.xsd">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,11 +157,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="ViewModel\App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Editors\GraphicEditor\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

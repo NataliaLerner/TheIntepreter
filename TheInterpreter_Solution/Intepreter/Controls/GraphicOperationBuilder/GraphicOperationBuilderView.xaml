@@ -9,15 +9,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Button Content="Test" Command="{Binding TestCommand}"/>
-        <ListView ItemsSource="{Binding List}" >
+        
+        <ItemsControl ItemsSource="{Binding List}" Width="Auto" HorizontalAlignment="Left" Cursor="Hand" Background="WhiteSmoke">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="local:GraphicOperationBuilderElementViewModel">
+                    <Border BorderBrush="Bisque" BorderThickness="2" Margin="2">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="{Binding OperationName}" FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <i:Interaction.Behaviors>
+                            <behavior:FrameworkElementDragBehavior/>
+                        </i:Interaction.Behaviors>
+
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!--<ListView ItemsSource="{Binding List}"  >
             <ListView.ItemTemplate>
                 <DataTemplate DataType="local:GraphicOperationBuilderElementViewModel">
                     <Border BorderBrush="Bisque" BorderThickness="2" Margin="2">
                         <StackPanel Margin="10">
                             <TextBlock Text="{Binding OperationName}" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding OperationCode}" FontWeight="Bold"/>
-
                         </StackPanel>
 
                         <i:Interaction.Behaviors>
@@ -27,6 +41,6 @@
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </Grid>
 </UserControl>

@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Intepreter.Model.Abstract
 {
-    public interface IEditor
+    public interface IOperationEditor
     {
         /// <summary>
         ///     Создает XmlReader из данных, содержащихся в Editor
@@ -19,6 +19,6 @@ namespace Intepreter.Model.Abstract
         ///     Загружает Xml разметку в Editor
         /// </summary>
         /// <param name="markup"></param>
-        void LoadXmlMarkup(XDocument markup);
+        void LoadXmlMarkup(XmlDocument markup);
     }
 }

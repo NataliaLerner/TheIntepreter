@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-
+using System.Xml.Serialization;
 using Intepreter.Model.Abstract;
 using Intepreter.Model.Operations;
 using Intepreter.ViewModel.Editors;
@@ -42,11 +42,11 @@ namespace Intepreter.Service
         /// <summary>
         /// Берет операции из TextEditor и кладет результат в output
         /// </summary>
-        public void PerformAllFromTextEditor(IEditor editor, SimpleTextEditorViewModel output)
+        public void PerformAllFromTextEditor(IOperationEditor editor, SimpleTextEditorViewModel output)
         {
             try
             {
-                using (var reader = editor.CreateXmlReader(_settings))
+                using (var reader = XmlReader.Create(new StringReader(_currentXmlMarkup.OuterXml)) /*editor.CreateXmlReader(_settings)*/)
                 {
                     var outputBuilder = new StringBuilder();
 
@@ -93,13 +93,13 @@ namespace Intepreter.Service
         /// </summary>
         /// <param name="editor"></param>
         /// <param name="output"></param>
-        public void SaveAllToBinaryFile(IEditor editor, ISimpleTextEditor output)
+        public void SaveAllToBinaryFile(IOperationEditor editor, ISimpleTextEditor output)
         {
             try
             {
                 using (var binWriter = new BinaryWriter(File.Open(_fileName, FileMode.OpenOrCreate)))
                 {
-                    using (var reader = editor.CreateXmlReader(_settings))
+                    using (var reader = XmlReader.Create(new StringReader(_currentXmlMarkup.OuterXml)) /*editor.CreateXmlReader(_settings)*/)
                     {
                         while (reader.Read())
                         {
@@ -124,10 +124,7 @@ namespace Intepreter.Service
             }
         }
 
-        /// <summary>
-        /// Загрузка в Edit из бинарного файла. Output для вывода ошибок
-        /// </summary>
-        public void LoadAllFromBinaryFile(IEditor editor, SimpleTextEditorViewModel output, string fileName)
+        public void LoadAllFromBinaryFile(IOperationEditor textEditor, SimpleTextEditorViewModel output, string fileName)
         {
             if (fileName != null)
             {
@@ -138,25 +135,26 @@ namespace Intepreter.Service
             {
                 using (var binReader = new BinaryReader(File.Open(_fileName, FileMode.Open)))
                 {
-                    var markup = new XDocument(
-                        new XElement("File",
-                            new XAttribute("name", _fileName)));
+                    var markup = new XmlDocument();
+
+                    var root = markup.CreateElement("File");
+                    root.SetAttribute("name", _fileName);
 
                     while (binReader.BaseStream.Position != binReader.BaseStream.Length)
                     {
                         var num32 = binReader.ReadInt32();
-
-                        markup.Root.Add
-                        (new XElement("Number",
-                            new XAttribute("r1", OperationCore.GetStringRegister(num32, 1, 10)),
-                            new XAttribute("r2", OperationCore.GetStringRegister(num32, 2, 10)),
-                            new XAttribute("r3", OperationCore.GetStringRegister(num32, 3, 10)),
-                            new XAttribute("op", OperationCore.GetStringOperation(num32))));
-
-                        
+                        var xmlNum32 = markup.CreateElement("Number");
+                        xmlNum32.SetAttribute("r1", OperationCore.GetStringRegister(num32, 1, 10));
+                        xmlNum32.SetAttribute("r2", OperationCore.GetStringRegister(num32, 2, 10));
+                        xmlNum32.SetAttribute("r3", OperationCore.GetStringRegister(num32, 3, 10));
+                        xmlNum32.SetAttribute("op", OperationCore.GetStringOperation(num32));
+                        root.AppendChild(xmlNum32);
                     }
 
-                    editor.LoadXmlMarkup(markup);
+                    markup.AppendChild(root);
+
+                    _currentXmlMarkup = markup;
+                    textEditor.LoadXmlMarkup(_currentXmlMarkup);
                 }
             }
             catch (Exception e)
@@ -165,45 +163,7 @@ namespace Intepreter.Service
             }
         }
 
-        public void LoadAllFromBinaryFile_Test(IEditor textEditor, IEditor graphicEditor, SimpleTextEditorViewModel output, string fileName)
-        {
-            if (fileName != null)
-            {
-                _fileName = fileName;
-            }
-
-            try
-            {
-                using (var binReader = new BinaryReader(File.Open(_fileName, FileMode.Open)))
-                {
-                    var markup = new XDocument(
-                        new XElement("File",
-                            new XAttribute("name", _fileName)));
-
-                    while (binReader.BaseStream.Position != binReader.BaseStream.Length)
-                    {
-                        var num32 = binReader.ReadInt32();
-
-                        markup.Root.Add
-                        (new XElement("Number",
-                            new XAttribute("r1", OperationCore.GetStringRegister(num32, 1, 10)),
-                            new XAttribute("r2", OperationCore.GetStringRegister(num32, 2, 10)),
-                            new XAttribute("r3", OperationCore.GetStringRegister(num32, 3, 10)),
-                            new XAttribute("op", OperationCore.GetStringOperation(num32))));
-
-                        
-                    }
-
-                    textEditor.LoadXmlMarkup(markup);
-                    graphicEditor.LoadXmlMarkup(markup);
-                }
-            }
-            catch (Exception e)
-            {
-                output.AppendLine(e.Message);
-            }
-        }
-
+        private XmlDocument _currentXmlMarkup;
         private string _fileName;
         private readonly XmlReaderSettings _settings;
     }
