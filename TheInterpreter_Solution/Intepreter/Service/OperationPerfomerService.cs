@@ -70,19 +70,19 @@ namespace Intepreter.Service
                                 OperationCore.GetRegister(num32, 2),
                                 OperationCore.GetRegister(num32, 3));
                         }
-                        else if (reader.Name == "File")
+                        else if (reader.Name == "File" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             if (reader[0] != null)
                             {
                                 _fileName = reader[0];
                             }
                         }
-
-                        output.Text = outputBuilder.ToString();
                     }
+
+                    output.Text = outputBuilder.ToString();
                 }
             }
-            catch (Exception e)
+            catch (XmlException e)
             {
                 output.AppendLine(e.Message);
             }

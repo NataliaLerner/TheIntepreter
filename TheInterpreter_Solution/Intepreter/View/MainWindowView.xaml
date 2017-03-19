@@ -9,6 +9,7 @@
         xmlns:b="clr-namespace:Intepreter.Behavior"
         xmlns:viewModel="clr-namespace:Intepreter.ViewModel"
         xmlns:graphicOperationBuilder="clr-namespace:Intepreter.Controls.GraphicOperationBuilder"
+        xmlns:textOperationEditor="clr-namespace:Intepreter.Controls.TextOperationEditor"
         mc:Ignorable="d"
         Title="Intepreter" Height="350" Width="525" WindowState="Maximized">
     
@@ -19,6 +20,10 @@
     <Window.Resources>
         <DataTemplate DataType="{x:Type graphicOperationBuilder:GraphicOperationBuilderViewModel}">
             <graphicOperationBuilder:View/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type textOperationEditor:TextOperationEditorViewModel}">
+            <textOperationEditor:TextOperationEditorView/>
         </DataTemplate>
         
         <Style TargetType="TextBox">
@@ -71,16 +76,10 @@
                       VerticalAlignment="Center"
                       HorizontalAlignment="Stretch"/>
         <!--#endregion-->
-        
-        
-        <ScrollViewer Grid.Column="0" Grid.Row="1" 
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto">
 
-            <TextBox Text="{Binding TextEditor.Text, Mode=TwoWay}"
-                     AcceptsTab="True">
-            </TextBox>
-        </ScrollViewer>
+        
+        <ContentControl Grid.Column="0" Grid.Row="1"  
+                         Content="{Binding TextEditor}"/>
         
         
         <!--Графический дизайнер-->

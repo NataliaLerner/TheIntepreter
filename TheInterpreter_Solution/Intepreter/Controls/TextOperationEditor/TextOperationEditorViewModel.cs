@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms.VisualStyles;
 using System.Xml;
-using System.Xml.Linq;
-using Intepreter.Model.Abstract;
 
-namespace Intepreter.ViewModel.Editors
+using Intepreter.Model.Abstract;
+using Intepreter.ViewModel.Editors;
+
+namespace Intepreter.Controls.TextOperationEditor
 {
-    public class OperationTextEditorViewModel :
+    public class TextOperationEditorViewModel :
         SimpleTextEditorViewModel, IOperationEditor
     {
         public XmlReader CreateXmlReader(XmlReaderSettings settings)
@@ -27,7 +26,6 @@ namespace Intepreter.ViewModel.Editors
             {
                 throw new ArgumentNullException(nameof(markup));
             }
-
             using (var strWriter = new StringWriter())
             {
                 using (var xmlWriter = new XmlTextWriter(strWriter))

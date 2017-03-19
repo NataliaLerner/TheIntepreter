@@ -35,3 +35,5 @@ E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\Graph
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationBuilder\GraphicOperationBuilderView.g.cs
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\GraphicOperationBuilder\GraphicOperationBuilderView.baml
 E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Intepreter_Content.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\TextOperationEditor\TextOperationEditorView.g.cs
+E:\Git\TheIntepreter\TheInterpreter_Solution\Intepreter\obj\Debug\Controls\TextOperationEditor\TextOperationEditorView.baml

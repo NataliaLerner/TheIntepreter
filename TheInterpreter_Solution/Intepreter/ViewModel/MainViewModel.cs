@@ -4,18 +4,20 @@ using System.Windows;
 using Intepreter.ViewModel.Editors;
 using Intepreter.Service;
 using Intepreter.Controls.GraphicOperationBuilder;
+using Intepreter.Controls.TextOperationEditor;
 
 using Microsoft.Win32;
 
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 
+
 namespace Intepreter.ViewModel
 {
     public class MainViewModel :
         ViewModelBase
     {
-        public OperationTextEditorViewModel TextEditor { get; } =       new OperationTextEditorViewModel();
+        public TextOperationEditorViewModel TextEditor { get; } =       new TextOperationEditorViewModel();
         public SimpleTextEditorViewModel    Output { get; } =           new SimpleTextEditorViewModel();
         public GraphicOperationBuilderViewModel GraphicBuilder { get; } = new GraphicOperationBuilderViewModel();
 

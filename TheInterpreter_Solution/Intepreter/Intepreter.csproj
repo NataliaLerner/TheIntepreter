@@ -97,19 +97,26 @@
     <Compile Include="Controls\GraphicOperationEditor\GraphicOperationEditorViewModel.cs" />
     <Compile Include="Behavior\IDragable.cs" />
     <Compile Include="Behavior\IDropable.cs" />
+    <Compile Include="Controls\TextOperationEditor\TextOperationEditorView.xaml.cs">
+      <DependentUpon>TextOperationEditorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Abstract\IOperationEditor.cs" />
     <Compile Include="Model\Abstract\ISimpleTextEditor.cs" />
     <Compile Include="Model\Operations\Constants.cs" />
     <Compile Include="Model\Operations\Operation.cs" />
     <Compile Include="Model\Operations\OperationCore.cs" />
     <Compile Include="Service\OperationPerfomerService.cs" />
-    <Compile Include="ViewModel\Editors\OperationTextEditorViewModel.cs" />
+    <Compile Include="Controls\TextOperationEditor\TextOperationEditorViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="Controls\GraphicOperationBuilder\GraphicOperationBuilderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\GraphicOperationEditor\GraphicOperationEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextOperationEditor\TextOperationEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
